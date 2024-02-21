@@ -1,7 +1,7 @@
 # Directory
 
-Directory is a small application to look at apps within a category. It is suitable for internal and public usage.
+Directory is a small application to list some applications or items in a categorized and simple way. It is suitable for internal and public usage.
 
 # License
 
-MIT[license](LICENSE)
+[MIT](LICENSE)
