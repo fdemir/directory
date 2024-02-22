@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Item from "./item";
-import { getCategories } from "../actions";
+import { getCategories } from "../../actions";
 
 export default async function Nav() {
   const categories = await getCategories();
