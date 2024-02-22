@@ -5,6 +5,12 @@ import { getCategories } from "../actions";
 
 export default async function Nav() {
   const categories = await getCategories();
+  categories.unshift({
+    name: "Home",
+    slug: "",
+    id: 0,
+    icon: "Home",
+  });
 
   return (
     <nav className="w-[300px] p-5 flex flex-col gap-4 fixed">

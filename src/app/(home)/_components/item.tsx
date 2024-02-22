@@ -33,7 +33,7 @@ export default function Item({ category }: ItemProps) {
 
   return (
     <Link
-      href={`/category/${category.slug}`}
+      href={category.slug ? `/category/${category.slug}` : "/"}
       className="flex items-center hover:bg-primary-foreground rounded-md py-2 focus:outline-none focus:ring-2 focus:ring-primary-foreground transition-colors"
     >
       <span
