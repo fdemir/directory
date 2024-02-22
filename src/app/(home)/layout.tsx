@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Nav from "./_components/nav";
 
 export default function HomeLayout({
@@ -8,7 +9,9 @@ export default function HomeLayout({
   return (
     <main className="flex">
       <aside>
-        <Nav />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Nav />
+        </Suspense>
       </aside>
       <main className="p-5 ml-[300px]">{children}</main>
     </main>
