@@ -1,16 +1,9 @@
-import { getItems } from "../actions";
-import Item from "./item";
+import React from "react";
 
-type ItemListProps = {
-  slug?: string;
-};
-
-export default async function ItemList({ slug = "" }: ItemListProps) {
-  const items = await getItems(slug);
-
-  return (
-    <div>
-      <Item />
-    </div>
-  );
+export default async function ItemList({
+  children,
+}: {
+  children: React.ReactElement[];
+}) {
+  return <div className="flex flex-col">{children}</div>;
 }

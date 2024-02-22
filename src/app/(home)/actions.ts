@@ -9,18 +9,18 @@ export async function getCategories() {
   return db.select().from(category);
 }
 
-export async function getItems(slug?: string) {
-  if (slug) {
-    return db
-      .select({
-        item,
-      })
-      .from(item)
-      .leftJoin(category, eq(item.category_id, category.id))
-      .where(eq(category.slug, slug))
-      .orderBy(desc(item.created_at))
-      .limit(100);
-  }
+export async function getItemsBySlug(slug: string) {
+  return db
+    .select({
+      item,
+    })
+    .from(item)
+    .leftJoin(category, eq(item.category_id, category.id))
+    .where(eq(category.slug, slug))
+    .orderBy(desc(item.created_at))
+    .limit(100);
+}
 
+export async function getItems() {
   return db.select().from(item).orderBy(desc(item.created_at)).limit(100);
 }
