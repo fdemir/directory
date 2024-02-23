@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Item({ data }: { data: ItemT }) {
   return (
-    <Link className="py-4 flex gap-4 w-full items-center" href="/item/2">
+    <Link className="py-4 flex gap-4 w-full items-center" href="/item/1">
       <Image
         src="/example-link-icon.jpg"
         width={72}
