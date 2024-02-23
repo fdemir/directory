@@ -15,7 +15,7 @@ export default function HomeLayout({
           <Nav />
         </Suspense>
       </aside>
-      <main className="grid p-5 gap-5 grid-cols-2 w-full ml-[300px]">
+      <main className="grid p-5 gap-5 grid-cols-2 ml-[300px] max-w-[2400px]">
         <div>{children}</div>
         <div>{modal}</div>
       </main>
