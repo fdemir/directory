@@ -15,6 +15,12 @@ export async function getCategory(slug: string) {
   });
 }
 
+export async function getItemById(id: number) {
+  return db.query.item.findFirst({
+    where: eq(item.id, id),
+  });
+}
+
 export async function getItemsBySlug(slug: string) {
   // TODO: consider the db.query
   return db
