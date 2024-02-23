@@ -9,7 +9,14 @@ export async function getCategories() {
   return db.select().from(category);
 }
 
+export async function getCategory(slug: string) {
+  return db.query.category.findFirst({
+    where: eq(category.slug, slug),
+  });
+}
+
 export async function getItemsBySlug(slug: string) {
+  // TODO: consider the db.query
   return db
     .select({
       item,

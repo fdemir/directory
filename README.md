@@ -20,6 +20,8 @@ The main reason is to prevent spam and inappropriate content. Also, it is a good
 
 ## Development
 
+<!-- turso dev --db-file local.db -->
+
 (todo!)
 
 ## Self-hosting
