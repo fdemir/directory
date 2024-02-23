@@ -13,6 +13,9 @@ const randomLinkColorClassList = [
   "bg-emerald-800 text-emerald-300",
   "bg-rose-800 text-rose-200",
   "bg-cyan-800 text-cyan-200",
+  "bg-green-800 text-green-200",
+  "bg-red-800 text-red-200",
+  "bg-indigo-800 text-indigo-200",
 ];
 
 function getRandomIdxFromSlug(slug: string, range: number) {
