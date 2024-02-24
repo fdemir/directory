@@ -14,7 +14,7 @@ Directory is a full-stack application, built with the following technologies:
 
 Everyone can submit a new item to the directory category. But It needs to be validated before its public. You can accept the submissions manually.
 
-### Why submissions need to be validated?
+### Why submissions need to be reviwed?
 
 The main reason is to prevent spam and inappropriate content. Also, it is a good way to keep the directory clean and useful.
 
