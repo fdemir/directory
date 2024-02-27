@@ -3,7 +3,7 @@
 import { db } from "@/db";
 import { category } from "@/db/schema/category";
 import { item } from "@/db/schema/item";
-import { eq, desc } from "drizzle-orm";
+import { eq, desc, and } from "drizzle-orm";
 
 export async function getCategories() {
   return db.select().from(category);
@@ -29,11 +29,16 @@ export async function getItemsBySlug(slug: string) {
     })
     .from(item)
     .leftJoin(category, eq(item.category_id, category.id))
-    .where(eq(category.slug, slug))
+    .where(and(eq(category.slug, slug), eq(item.verified, 1)))
     .orderBy(desc(item.created_at))
     .limit(100);
 }
 
 export async function getItems() {
-  return db.select().from(item).orderBy(desc(item.created_at)).limit(100);
+  return db
+    .select()
+    .from(item)
+    .where(eq(item.verified, 1))
+    .orderBy(desc(item.created_at))
+    .limit(100);
 }
