@@ -54,7 +54,7 @@ export default async function ItemDetail({
               variant="secondary"
               className="px-3 py-2 text-md items-center flex gap-2 flex-shrink-0"
             >
-              <span>App Store</span>
+              <span>Link</span>
               <MdLink className="w-6 h-6" />
             </Badge>
           </Link>
