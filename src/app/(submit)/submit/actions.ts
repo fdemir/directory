@@ -15,6 +15,8 @@ export async function submit(values: FormData) {
     crypto.randomUUID() + "." + payload.logo.type.split("/")[1]
   }`;
 
+  // TODO: optimize image for upload
+
   await db.insert(item).values({
     name: payload.name,
     description: payload.description,
