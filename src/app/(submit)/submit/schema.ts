@@ -11,7 +11,7 @@ export const ACCEPTED_IMAGE_TYPES = [
 ];
 
 export const submitSchema = zfd.formData({
-  name: zfd.text(z.string().min(80)),
+  name: zfd.text(z.string().max(80)),
   description: zfd.text(z.string().max(1000)),
   url: zfd.text(z.string().url("Must be a valid URL")),
   short_desc: zfd.text(z.string().min(1).max(100)),

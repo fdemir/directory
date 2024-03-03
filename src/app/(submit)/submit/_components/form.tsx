@@ -82,7 +82,7 @@ export function SubmitForm({ categories }: SubmitFormProps) {
                     type="file"
                     multiple={false}
                     {...field}
-                    value={field?.value?.name}
+                    value={undefined}
                     onChange={(event) => {
                       field.onChange(event?.target?.files?.[0]);
                     }}
