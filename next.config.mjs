@@ -4,7 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: process.env.S3_PUBLIC_URL.replace("https://", ""),
+        hostname: process.env.NEXT_PUBLIC_S3_PUBLIC_URL.replace("https://", ""),
       }
     ]
   }
