@@ -1,17 +1,37 @@
 "use server";
 import { z } from "zod";
-import { submitSchema } from "./schema";
+import { zfd } from "zod-form-data";
 import { db } from "@/db";
 import { item } from "@/db/schema/item";
 
-export async function submit(values: z.infer<typeof submitSchema>) {
-  const result = db.insert(item).values({
-    name: values.name,
-    description: values.description,
-    url: values.url,
-    short_desc: values.short_desc,
-    category_id: Number(values.category_id),
+import { PutObjectCommand } from "@aws-sdk/client-s3";
+import { s3Client } from "@/lib/r2";
+import { submitSchema } from "./schema";
+
+export async function submit(values: FormData) {
+  const payload = submitSchema.parse(values);
+
+  const fileName = `${
+    crypto.randomUUID() + "." + payload.logo.type.split("/")[1]
+  }`;
+
+  await db.insert(item).values({
+    name: payload.name,
+    description: payload.description,
+    url: payload.url,
+    short_desc: payload.short_desc,
+    category_id: Number(payload.category_id),
+    logo: fileName,
   });
 
-  return result;
+  const putObjectCommand = new PutObjectCommand({
+    Bucket: "dir",
+    Key: fileName,
+    ContentType: payload.logo.type,
+    Body: Buffer.from(await payload.logo.arrayBuffer()),
+  });
+
+  await s3Client.send(putObjectCommand);
+
+  return true;
 }

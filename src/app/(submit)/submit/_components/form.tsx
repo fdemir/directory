@@ -36,7 +36,29 @@ export function SubmitForm({ categories }: SubmitFormProps) {
   });
 
   async function onSubmit(values: z.infer<typeof submitSchema>) {
-    await submit(values);
+    const formData = new FormData();
+
+    // FIXME: better handle fields
+    formData.append("name", values.name);
+    formData.append("description", values.description);
+    formData.append("url", values.url);
+    formData.append("short_desc", values.short_desc);
+    formData.append("category_id", values.category_id);
+    formData.append("logo", values.logo);
+
+    await submit(formData);
+
+    form.reset({
+      name: "",
+      description: "",
+      url: "",
+      short_desc: "",
+      category_id: "",
+      logo: undefined,
+    });
+
+    // TODO: toast or smth
+    alert("Submitted.");
   }
 
   return (
@@ -49,6 +71,28 @@ export function SubmitForm({ categories }: SubmitFormProps) {
           onSubmit={form.handleSubmit(onSubmit)}
           className="my-4 flex flex-col gap-4"
         >
+          <FormField
+            control={form.control}
+            name="logo"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Logo</FormLabel>
+                <FormControl>
+                  <Input
+                    type="file"
+                    multiple={false}
+                    {...field}
+                    value={field?.value?.name}
+                    onChange={(event) => {
+                      field.onChange(event?.target?.files?.[0]);
+                    }}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
           <FormField
             control={form.control}
             name="name"

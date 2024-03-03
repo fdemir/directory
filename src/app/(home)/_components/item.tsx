@@ -4,9 +4,12 @@ import Link from "next/link";
 
 export default function Item({ data }: { data: ItemT }) {
   return (
-    <Link className="py-4 flex gap-4 w-full items-center" href="/item/1">
+    <Link
+      className="py-4 flex gap-4 w-full items-center"
+      href={`/item/${data.id}`}
+    >
       <Image
-        src="/example-link-icon.jpg"
+        src={`${process.env.NEXT_PUBLIC_S3_PUBLIC_URL}/${data.logo}`}
         width={72}
         height={72}
         alt="Snapchat"

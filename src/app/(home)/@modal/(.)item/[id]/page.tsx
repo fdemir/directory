@@ -30,7 +30,7 @@ export default async function ItemDetail({
         <Item data={item} />
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
-        <Carousel className="w-full">
+        {/* <Carousel className="w-full">
           <CarouselContent>
             {Array.from({ length: 5 }).map((_, index) => (
               <CarouselItem key={index} className="basis-1/3">
@@ -46,7 +46,7 @@ export default async function ItemDetail({
               </CarouselItem>
             ))}
           </CarouselContent>
-        </Carousel>
+        </Carousel> */}
 
         <div className="my-3 flex gap-4">
           <Link target="_blank" href="https://watchandchill.in/">

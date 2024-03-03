@@ -13,6 +13,7 @@ export const item = sqliteTable("item", {
     .references(() => category.id)
     .default(0),
   url: text("url").notNull(),
+  logo: text("logo").notNull(),
   // 0 = not verified, 1 = verified
   verified: integer("verified").default(0),
 });
