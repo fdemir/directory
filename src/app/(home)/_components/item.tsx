@@ -13,7 +13,7 @@ export default function Item({ data }: { data: ItemT }) {
         width={72}
         height={72}
         alt="Snapchat"
-        className="rounded-md"
+        className="rounded-md aspect-square"
       />
       <div className="h-full flex flex-col text-xl">
         <span className="font-semibold">{data.name}</span>
