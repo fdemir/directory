@@ -8,14 +8,12 @@ import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { s3Client } from "@/lib/r2";
 import { submitSchema } from "./schema";
 
+import sharp from "sharp";
+
 export async function submit(values: FormData) {
   const payload = submitSchema.parse(values);
 
-  const fileName = `${
-    crypto.randomUUID() + "." + payload.logo.type.split("/")[1]
-  }`;
-
-  // TODO: optimize image for upload
+  const fileName = `${crypto.randomUUID()}.webp`;
 
   await db.insert(item).values({
     name: payload.name,
@@ -26,11 +24,14 @@ export async function submit(values: FormData) {
     logo: fileName,
   });
 
+  const imageBuffer = Buffer.from(await payload.logo.arrayBuffer());
+  const actualImage = await sharp(imageBuffer).resize(300).webp().toBuffer();
+
   const putObjectCommand = new PutObjectCommand({
     Bucket: "dir",
     Key: fileName,
-    ContentType: payload.logo.type,
-    Body: Buffer.from(await payload.logo.arrayBuffer()),
+    ContentType: "image/webp",
+    Body: actualImage,
   });
 
   await s3Client.send(putObjectCommand);
