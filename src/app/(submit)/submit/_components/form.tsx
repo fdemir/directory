@@ -92,7 +92,6 @@ export function SubmitForm({ categories }: SubmitFormProps) {
               </FormItem>
             )}
           />
-
           <FormField
             control={form.control}
             name="name"
@@ -106,7 +105,6 @@ export function SubmitForm({ categories }: SubmitFormProps) {
               </FormItem>
             )}
           />
-
           <FormField
             control={form.control}
             name="short_desc"
@@ -120,7 +118,6 @@ export function SubmitForm({ categories }: SubmitFormProps) {
               </FormItem>
             )}
           />
-
           <FormField
             control={form.control}
             name="description"
@@ -137,7 +134,6 @@ export function SubmitForm({ categories }: SubmitFormProps) {
               </FormItem>
             )}
           />
-
           <FormField
             control={form.control}
             name="url"
@@ -151,7 +147,6 @@ export function SubmitForm({ categories }: SubmitFormProps) {
               </FormItem>
             )}
           />
-
           <FormField
             control={form.control}
             name="category_id"
@@ -182,8 +177,9 @@ export function SubmitForm({ categories }: SubmitFormProps) {
               </FormItem>
             )}
           />
-
-          <Button type="submit">Submit for review</Button>
+          <Button type="submit" disabled={form.formState.isSubmitting}>
+            Submit
+          </Button>
         </form>
       </Form>
     </div>
