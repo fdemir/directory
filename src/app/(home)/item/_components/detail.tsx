@@ -20,7 +20,7 @@ export default async function ItemDetail({ id }: { id: string }) {
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
         <div className="my-3 flex gap-4">
-          <Link target="_blank" href="https://watchandchill.in/">
+          <Link target="_blank" href={item.url}>
             <Badge
               variant="secondary"
               className="px-3 py-2 text-md items-center flex gap-2 flex-shrink-0"
