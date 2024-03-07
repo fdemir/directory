@@ -12,7 +12,7 @@ export default function Item({ data }: { data: ItemT }) {
         src={`${process.env.NEXT_PUBLIC_S3_PUBLIC_URL}/${data.logo}`}
         width={72}
         height={72}
-        alt="Snapchat"
+        alt={data.name}
         className="rounded-md aspect-square"
       />
       <div className="h-full flex flex-col text-xl">
