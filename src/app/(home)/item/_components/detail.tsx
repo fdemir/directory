@@ -31,7 +31,7 @@ export default async function ItemDetail({ id }: { id: string }) {
           </Link>
         </div>
 
-        <p>{item.description}</p>
+        <p className="whitespace-pre-wrap">{item.description}</p>
       </CardContent>
     </Card>
   );
